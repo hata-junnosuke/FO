@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<h1>一覧</h1>
+<table>
+  <thead>
+  <tr>
+    <th>登録</th>
+    <th>商品コード</th>
+    <th>商品名</th>
+    <th>販売価格</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= product.id %></td>
+      <td><%= product.code %></td>
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>
