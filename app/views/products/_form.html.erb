@@ -1,26 +1,17 @@
- <%= form_with model: @form, url: products_path, method: :post do |fb| %>
-    <% if @form.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<%= form_with model: @form, url: products_path, method: :post do |fb| %>
+  <%= render 'shared/error_message', object: fb.object %>
 
-        <ul>
-          <% @form.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <table class="table">
-      <thead>
+  <table class="table">
+    <thead>
       <tr>
         <th>登録</th>
         <th>商品コード</th>
         <th>商品名</th>
         <th>販売価格</th>
       </tr>
-      </thead>
-      <tbody class="bulk-registration-form">
+    </thead>
+    <tbody class="bulk-registration-form">
+      # fields_forはform_with内で渡したモデルとは異なるモデルを編集できるようにするメソッド
       <%= fb.fields_for :products do |f| %>
         <tr class="item">
           <td class="text-center">
@@ -37,10 +28,10 @@
           </td>
         </tr>
       <% end %>
-      </tbody>
-    </table>
+    </tbody>
+  </table>
 
-    <div class="text-center">
-      <%= fb.submit '一括登録', class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+  <div class="text-center">
+    <%= fb.submit '一括登録', class: 'btn btn-primary' %>
+  </div>
+<% end %>
